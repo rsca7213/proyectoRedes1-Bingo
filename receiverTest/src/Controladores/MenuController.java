@@ -35,11 +35,11 @@ public class MenuController implements Initializable {
             scene.getStylesheets().add(MenuController.class.getResource("../Estilos/JuegoLinea.css").toExternalForm());
             stage.setScene(scene);
             stage.sizeToScene();
-            stage.setTitle("BINGO GAMING");
+            stage.setTitle("Bingo: Juego de Linea");
             
             stage.show();
             stage.setMinWidth(350);
-            stage.setMinHeight(400);
+            stage.setMinHeight(500);
         }
         catch (IOException io) {
             io.printStackTrace();
@@ -49,13 +49,13 @@ public class MenuController implements Initializable {
     
     private void setHovers () {
         lineaPane.setOnMouseEntered((event) -> {
-            lineaPane.setStyle("-fx-background-color: lightgray;");
+            lineaPane.setStyle("-fx-background-color: #c0c0c0;");
         });
         lineaPane.setOnMouseExited((event) -> {
             lineaPane.setStyle("-fx-background-color: transparent;");
         });
         llenoPane.setOnMouseEntered((event) -> {
-            llenoPane.setStyle("-fx-background-color: lightgray;");
+            llenoPane.setStyle("-fx-background-color: #c0c0c0;");
         });
         llenoPane.setOnMouseExited((event) -> {
             llenoPane.setStyle("-fx-background-color: transparent;");
