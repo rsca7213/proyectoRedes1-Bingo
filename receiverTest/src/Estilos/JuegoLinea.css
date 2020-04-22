@@ -134,6 +134,16 @@ GridPane #Letra{
     -fx-background-color: #1a75ff;
 }
 
+#generador:disabled{
+    -fx-opacity:1;
+    -fx-background-color:#6FDC6F;
+    
+}
+
+#generadorVBox, #piedraVBox{
+    -fx-alignment:center;
+}
+
 #bottomContainer{
     -fx-padding-top:20px;
     -fx-margin-top:20px;

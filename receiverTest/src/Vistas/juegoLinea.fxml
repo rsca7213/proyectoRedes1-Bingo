@@ -47,16 +47,17 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
                </rowConstraints>
             </GridPane>
-            <Pane minHeight="66.0" prefHeight="66.0" prefWidth="334.0">
+            <VBox fx:id="generadorVBox" minHeight="66.0" prefHeight="66.0" prefWidth="334.0">
                <children>
                   <Button fx:id="generador" layoutX="78.0" layoutY="17.0" mnemonicParsing="false" onAction="#generar" text="Generar Número" textFill="WHITE">
                      <font>
                         <Font name="SansSerif Bold" size="18.0" />
                      </font>
                   </Button>
+                  
                </children>
-            </Pane>
-            <Pane prefHeight="30.0" prefWidth="334.0">
+            </VBox>
+            <VBox fx:id="piedraVBox" prefHeight="30.0" prefWidth="334.0">
                <children>
                   <Label fx:id="piedra" alignment="CENTER" layoutX="132.0" layoutY="-3.0" prefHeight="33.0" prefWidth="70.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -64,7 +65,7 @@
                      </font>
                   </Label>
                </children>
-            </Pane>
+            </VBox>
          </children>
       </VBox>
    </children>

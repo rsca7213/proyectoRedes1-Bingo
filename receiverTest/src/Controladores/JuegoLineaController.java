@@ -13,10 +13,13 @@ import javafx.event.ActionEvent;
 
 import Helpers.Helpers;
 import Clases.Carton;
+import javafx.scene.control.Button;
 
 public class JuegoLineaController implements Initializable {
     
     private Label labels[]= new Label[25];
+    private String bingo[]= new String[13];
+    
 
     //Llamamos a las funciones desde helpers para obtener los datos de la partida
     Helpers helper = new Helpers();
@@ -30,6 +33,10 @@ public class JuegoLineaController implements Initializable {
     //Label con el valor actual de la piedra
     @FXML
     private Label piedra;
+    
+    //Boton que genera las piedras
+    @FXML
+    private Button generador;
     
 
     /*
@@ -88,7 +95,18 @@ public class JuegoLineaController implements Initializable {
         for (int o = 0; o < numeros.length; o++) {
             System.out.print(numeros[o] + ",");
         }
-        if(helper.verificarGanadaLinea(numeros).equals("ver1")) {
+        
+        for(int i=0;i<13;i++){
+            bingo[i]="vacio";
+            
+        }
+        helper.verificarGanadaLinea(numeros,bingo);
+        
+        
+        
+        
+        
+        if(bingo[0].equals("ver1")) {
             
             for(int i=0;i<5;i++){
                 labels[i].setStyle("-fx-opacity:1;"
@@ -97,12 +115,15 @@ public class JuegoLineaController implements Initializable {
                             + "-fx-text-fill: white;"
                             + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             }
-            System.out.println(helper.verificarGanadaLinea(numeros));
+            
             System.out.println("\n¡FELICIDADES! Ha ganado el juego");
+            generador.setDisable(true);
+            generador.setText("BINGOOO!");
+            piedra.setVisible(false);
             piedra.setText("BINGO");
             piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
         }
-        else if(helper.verificarGanadaLinea(numeros).equals("ver2")){
+        if(bingo[1].equals("ver2")){
             
             for(int i=5;i<10;i++){
                 labels[i].setStyle("-fx-opacity:1;"
@@ -111,13 +132,15 @@ public class JuegoLineaController implements Initializable {
                             + "-fx-text-fill: white;"
                             + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             }
-            System.out.println(helper.verificarGanadaLinea(numeros));
+            generador.setDisable(true);
+            generador.setText("BINGOOO!");
+            piedra.setVisible(false);
             System.out.println("\n¡FELICIDADES! Ha ganado el juego");
             piedra.setText("BINGO");
             piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
             
         }
-        else if(helper.verificarGanadaLinea(numeros).equals("ver4")){
+        if(bingo[2].equals("ver4")){
             for(int i=15;i<20;i++){
                 labels[i].setStyle("-fx-opacity:1;"
                             +"-fx-border-color: white;"
@@ -125,14 +148,15 @@ public class JuegoLineaController implements Initializable {
                             + "-fx-text-fill: white;"
                             + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             }
-            System.out.println(helper.verificarGanadaLinea(numeros));
-            
+            piedra.setVisible(false);
+            generador.setDisable(true);
+            generador.setText("BINGOOO!"); 
             System.out.println("\n¡FELICIDADES! Ha ganado el juego");
             piedra.setText("BINGO");
             piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
             
         }
-        else if(helper.verificarGanadaLinea(numeros).equals("ver5")){
+        if(bingo[3].equals("ver5")){
             for(int i=20;i<25;i++){
                 labels[i].setStyle("-fx-opacity:1;"
                             +"-fx-border-color: white;"
@@ -140,14 +164,15 @@ public class JuegoLineaController implements Initializable {
                             + "-fx-text-fill: white;"
                             + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             }
-            System.out.println(helper.verificarGanadaLinea(numeros));
-            
+            piedra.setVisible(false);
+            generador.setDisable(true);
+            generador.setText("BINGOOO!");
             System.out.println("\n¡FELICIDADES! Ha ganado el juego");
             piedra.setText("BINGO");
             piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
             
         }
-        else if(helper.verificarGanadaLinea(numeros).equals("hor1")){
+        if(bingo[4].equals("hor1")){
             
             for(int i=0;i<21;i+=5){
                 labels[i].setStyle("-fx-opacity:1;"
@@ -156,14 +181,15 @@ public class JuegoLineaController implements Initializable {
                             + "-fx-text-fill: white;"
                             + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             }
-            System.out.println(helper.verificarGanadaLinea(numeros));
-            
+            piedra.setVisible(false);
+            generador.setDisable(true);
+            generador.setText("BINGOOO!");
             System.out.println("\n¡FELICIDADES! Ha ganado el juego");
             piedra.setText("BINGO");
             piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
             
         }
-        else if(helper.verificarGanadaLinea(numeros).equals("hor2")){
+        if(bingo[5].equals("hor2")){
             
             for(int i=1;i<22;i+=5){
                 labels[i].setStyle("-fx-opacity:1;"
@@ -172,14 +198,15 @@ public class JuegoLineaController implements Initializable {
                             + "-fx-text-fill: white;"
                             + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             }
-            System.out.println(helper.verificarGanadaLinea(numeros));
-            
+            generador.setDisable(true);
+            generador.setText("BINGOOO!");
+            piedra.setVisible(false);  
             System.out.println("\n¡FELICIDADES! Ha ganado el juego");
             piedra.setText("BINGO");
             piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
             
         }
-        else if(helper.verificarGanadaLinea(numeros).equals("hor4")){
+        if(bingo[6].equals("hor4")){
             
             for(int i=3;i<24;i+=5){
                 labels[i].setStyle("-fx-opacity:1;"
@@ -188,14 +215,15 @@ public class JuegoLineaController implements Initializable {
                             + "-fx-text-fill: white;"
                             + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             }
-            System.out.println(helper.verificarGanadaLinea(numeros));
-            
+            generador.setDisable(true);
+            generador.setText("BINGOOO!");
+            piedra.setVisible(false);   
             System.out.println("\n¡FELICIDADES! Ha ganado el juego");
             piedra.setText("BINGO");
             piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
             
         }
-        else if(helper.verificarGanadaLinea(numeros).equals("hor5")){
+        if(bingo[7].equals("hor5")){
             
             for(int i=4;i<25;i+=5){
                 labels[i].setStyle("-fx-opacity:1;"
@@ -204,30 +232,32 @@ public class JuegoLineaController implements Initializable {
                             + "-fx-text-fill: white;"
                             + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             }
-            System.out.println(helper.verificarGanadaLinea(numeros));
-            
+            generador.setDisable(true);
+            generador.setText("BINGOOO!");
+            piedra.setVisible(false);    
             System.out.println("\n¡FELICIDADES! Ha ganado el juego");
             piedra.setText("BINGO");
             piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
             
         }
-        else if(helper.verificarGanadaLinea(numeros).equals("ver3")){
+        if(bingo[8].equals("ver3")){
             
-            for(int i=11;i<16;i++){
+            for(int i=10;i<15;i++){
                 labels[i].setStyle("-fx-opacity:1;"
                             +"-fx-border-color: white;"
                             + "-fx-border-width: 4px;"
                             + "-fx-text-fill: white;"
                             + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             }
-            System.out.println(helper.verificarGanadaLinea(numeros));
-            
+            generador.setDisable(true);
+            generador.setText("BINGOOO!");
+            piedra.setVisible(false);    
             System.out.println("\n¡FELICIDADES! Ha ganado el juego");
             piedra.setText("BINGO");
             piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
             
         }
-        else if(helper.verificarGanadaLinea(numeros).equals("hor3")){
+        if(bingo[9].equals("hor3")){
             for(int i=2;i<23;i+=5){
                 labels[i].setStyle("-fx-opacity:1;"
                             +"-fx-border-color: white;"
@@ -235,14 +265,15 @@ public class JuegoLineaController implements Initializable {
                             + "-fx-text-fill: white;"
                             + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             }
-            System.out.println(helper.verificarGanadaLinea(numeros));
-            
+            piedra.setVisible(false);
+            generador.setDisable(true);
+            generador.setText("BINGOOO!");    
             System.out.println("\n¡FELICIDADES! Ha ganado el juego");
             piedra.setText("BINGO");
             piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
             
         }
-        else if(helper.verificarGanadaLinea(numeros).equals("dia1")){
+        if(bingo[10].equals("dia1")){
             
             for(int i=0;i<25;i+=6){
                 labels[i].setStyle("-fx-opacity:1;"
@@ -251,30 +282,33 @@ public class JuegoLineaController implements Initializable {
                             + "-fx-text-fill: white;"
                             + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             }
-            System.out.println(helper.verificarGanadaLinea(numeros));
-            
+            generador.setDisable(true);
+            generador.setText("BINGOOO!");
+            piedra.setVisible(false);  
             System.out.println("\n¡FELICIDADES! Ha ganado el juego");
             piedra.setText("BINGO");
             piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
             
         }
-        else if(helper.verificarGanadaLinea(numeros).equals("dia2")){
+        if(bingo[11].equals("dia2")){
             
-            for(int i=4;i<25;i+=4){
+            for(int i=4;i<21;i+=4){
                 labels[i].setStyle("-fx-opacity:1;"
                             +"-fx-border-color: white;"
                             + "-fx-border-width: 4px;"
                             + "-fx-text-fill: white;"
                             + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             }
-            System.out.println(helper.verificarGanadaLinea(numeros));
+            generador.setDisable(true);
+            generador.setText("BINGOOO!");
+            piedra.setVisible(false);
             
             System.out.println("\n¡FELICIDADES! Ha ganado el juego");
             piedra.setText("BINGO");
             piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
             
         }
-        else if(helper.verificarGanadaLinea(numeros).equals("esq")){
+        if(bingo[12].equals("esq")){
             labels[0].setStyle("-fx-opacity:1;"
                             +"-fx-border-color: white;"
                             + "-fx-border-width: 4px;"
@@ -295,7 +329,9 @@ public class JuegoLineaController implements Initializable {
                             + "-fx-border-width: 4px;"
                             + "-fx-text-fill: white;"
                         + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
-            System.out.println(helper.verificarGanadaLinea(numeros));
+            generador.setDisable(true);
+            generador.setText("BINGOOO!");
+            piedra.setVisible(false);
             System.out.println("\n¡FELICIDADES! Ha ganado el juego");
             piedra.setText("BINGO");
             piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");

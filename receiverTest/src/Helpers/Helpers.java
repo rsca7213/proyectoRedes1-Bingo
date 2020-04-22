@@ -186,51 +186,64 @@ public class Helpers {
         return contAciertos;
     }
     
-    public String verificarGanadaLinea(String[] numeros) {
+    public void verificarGanadaLinea(String[] numeros, String[] bingo) {
         
         /*if((ver1(numeros) == 5) || (ver2(numeros) == 5) || (ver4(numeros) == 5) || (ver5(numeros) == 5) || (hor1(numeros) == 5) || (hor2(numeros) == 5) || (hor4(numeros) == 5) || (hor5(numeros) == 5) || (ver3(numeros) == 4) || (hor3(numeros) == 4) || (dia1(numeros) == 4) || (dia2(numeros) == 4) || (esq(numeros) == 4)) {
             return true;
         }*/
         if(ver1(numeros) == 5){
-            return "ver1";
+            //return "ver1";
+            bingo[0]="ver1";
         }
-        else if(ver2(numeros) == 5){
-            return "ver2";
+        if(ver2(numeros) == 5){
+            //return "ver2";
+            bingo[1]="ver2";
         }
-        else if(ver4(numeros) == 5){
-            return "ver4";
+        if(ver4(numeros) == 5){
+            //return "ver4";
+            bingo[2]="ver4";
         }
-        else if(ver5(numeros) == 5){
-            return "ver5";
+        if(ver5(numeros) == 5){
+            //return "ver5";
+            bingo[3]="ver5";
         }
-        else if(hor1(numeros) == 5){
-            return "hor1";
+        if(hor1(numeros) == 5){
+            //return "hor1";
+            bingo[4]="hor1";
         }
-        else if(hor2(numeros) == 5){
-            return "hor2";
+        if(hor2(numeros) == 5){
+            //return "hor2";
+            bingo[5]="hor2";
         }
-        else if(hor4(numeros) == 5){
-            return "hor4";
+        if(hor4(numeros) == 5){
+            //return "hor4";
+            bingo[6]="hor4";
         }
-        else if(hor5(numeros) == 5){
-            return "hor5";
+        if(hor5(numeros) == 5){
+            //return "hor5";
+            bingo[7]="hor5";
         }
-        else if(ver3(numeros) == 4){
-            return "ver3";
+        if(ver3(numeros) == 4){
+            //return "ver3";
+            bingo[8]="ver3";
         }
-        else if(hor3(numeros) == 4){
-            return "hor3";
+        if(hor3(numeros) == 4){
+            //return "hor3";
+            bingo[9]="hor3";
         }
-        else if(dia1(numeros) == 4){
-            return "dia1";
+        if(dia1(numeros) == 4){
+            //return "dia1";
+            bingo[10]="dia1";
         }
-        else if(dia2(numeros) == 4){
-            return "dia2";
+        if(dia2(numeros) == 4){
+            //return "dia2";
+            bingo[11]="dia2";
         }
-        else if(esq(numeros) == 4){
-            return "esq";
+        if(esq(numeros) == 4){
+            //return "esq";
+            bingo[12]="esq";
         }
-        return "nada";
+        //return "nada";
         
     }    
     
