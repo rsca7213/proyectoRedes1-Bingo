@@ -342,6 +342,11 @@ public class JuegoLinea2Controller implements Initializable {
                             + "-fx-border-width: 4px;"
                             + "-fx-text-fill: white;"
                         + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
+            labels1[12].setStyle("-fx-opacity:1;"
+                            +"-fx-border-color: white;"
+                            + "-fx-border-width: 4px;"
+                            + "-fx-text-fill: white;"
+                        + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             generador.setDisable(true);
             generador.setText("BINGOOO!");
             piedra.setVisible(false);
@@ -571,6 +576,11 @@ public class JuegoLinea2Controller implements Initializable {
                             + "-fx-text-fill: white;"
                         + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             labels2[24].setStyle("-fx-opacity:1;"
+                            +"-fx-border-color: white;"
+                            + "-fx-border-width: 4px;"
+                            + "-fx-text-fill: white;"
+                        + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
+            labels2[12].setStyle("-fx-opacity:1;"
                             +"-fx-border-color: white;"
                             + "-fx-border-width: 4px;"
                             + "-fx-text-fill: white;"

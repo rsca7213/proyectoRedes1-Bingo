@@ -329,6 +329,11 @@ public class JuegoLineaController implements Initializable {
                             + "-fx-border-width: 4px;"
                             + "-fx-text-fill: white;"
                         + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
+            labels[12].setStyle("-fx-opacity:1;"
+                            +"-fx-border-color: white;"
+                            + "-fx-border-width: 4px;"
+                            + "-fx-text-fill: white;"
+                        + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
             generador.setDisable(true);
             generador.setText("BINGOOO!");
             piedra.setVisible(false);
