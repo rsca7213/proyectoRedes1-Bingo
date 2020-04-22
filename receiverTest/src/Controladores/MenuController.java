@@ -47,6 +47,27 @@ public class MenuController implements Initializable {
 
     }
     
+    private void juegoLleno() {
+        try {
+            
+            Parent page = FXMLLoader.load(getClass().getResource("../Vistas/juegoLleno.fxml"));       
+            Stage stage = (Stage) lineaPane.getScene().getWindow();
+            Scene scene = new Scene(page);
+            scene.getStylesheets().add(MenuController.class.getResource("../Estilos/JuegoLinea.css").toExternalForm());
+            stage.setScene(scene);
+            stage.sizeToScene();
+            stage.setTitle("Bingo: Juego Cartón Lleno");
+            
+            stage.show();
+            stage.setMinWidth(350);
+            stage.setMinHeight(500);
+        }
+        catch (IOException io) {
+            io.printStackTrace();
+        }
+
+    }
+    
     private void setHovers () {
         lineaPane.setOnMouseEntered((event) -> {
             lineaPane.setStyle("-fx-background-color: #c0c0c0;");
@@ -76,6 +97,7 @@ public class MenuController implements Initializable {
         });
         llenoPane.setOnMouseClicked((event) -> {
             System.out.println("Opcion de juego de carton lleno clickeado.");
+            juegoLleno();
         });
     }
 
