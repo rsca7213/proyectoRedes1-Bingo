@@ -7,24 +7,14 @@ public class Jugador {
     
     ArrayList<Carton> cartones;
     
-    public void crearCartones(int cant) {
+    public String[] crearCartones() {
         this.cartones = new ArrayList();
         
-        //Falta crear los cartones
-        if(cant == 1) {
            Carton carton1 = new Carton();
            this.cartones.add(carton1);
            
-           for(Carton a: cartones){
-               a.crearCarton();
-           }
+           this.cartones.get(0).crearCarton();
+           return this.cartones.get(0).getNumeros();
            
-        }
-        if(cant == 2) {
-           Carton carton1 = new Carton();
-           Carton carton2 = new Carton();
-           this.cartones.add(carton1);
-           this.cartones.add(carton2); 
-        }
-    }
+    }    
 }

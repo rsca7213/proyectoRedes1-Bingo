@@ -225,8 +225,10 @@ public class Carton {
         return numeros;
     }
     
+    /*
     public Carton(){
         crearCarton();
     }
+    */
     
 }
