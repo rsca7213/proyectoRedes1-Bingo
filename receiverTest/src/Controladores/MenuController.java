@@ -107,7 +107,7 @@ public class MenuController implements Initializable {
             scene.getStylesheets().add(MenuController.class.getResource("../Estilos/JuegoLinea.css").toExternalForm());
             stage.setScene(scene);
             stage.sizeToScene();
-            stage.setTitle("Bingo: Juego de Linea (2 cartones)");
+            stage.setTitle("Bingo: Juego Cartón Lleno (2 cartones)");
             stage.centerOnScreen();
             stage.show();
             stage.setMinWidth(350);
