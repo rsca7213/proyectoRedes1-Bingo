@@ -19,7 +19,7 @@ public class Conector {
             this.writePort = SerialPort.getCommPorts()[0];
         }
         catch(Exception e) {
-            System.err.println("Ha ocurrido un error al crear los puertos!");
+            System.err.println("Ha ocurrido un error al crear los puertos! Verifica que tengas puertos abiertos en VSPE. ");
         }
     }
     

@@ -18,6 +18,13 @@ import java.util.Scanner;
 public class Main extends Application {
 
     public static void main(String[] args) throws IOException {
+        /*Conector conector = new Conector();
+        conector.probarConectores();
+        conector.configurarEventoReceptor();
+        conector.enviarMensaje("mensajito");
+        conector.getReadPort().closePort();*/
+        
+        
         launch(args);
         
         /*
