@@ -100,7 +100,23 @@ public class MenuController implements Initializable {
     }
     
     private void juegoLleno2() {
-        System.out.println("opcion no disponible");
+        try {
+            Parent page = FXMLLoader.load(getClass().getResource("../Vistas/juegoLleno2.fxml"));       
+            Stage stage = (Stage) lineaPane.getScene().getWindow();
+            Scene scene = new Scene(page);
+            scene.getStylesheets().add(MenuController.class.getResource("../Estilos/JuegoLinea.css").toExternalForm());
+            stage.setScene(scene);
+            stage.sizeToScene();
+            stage.setTitle("Bingo: Juego de Linea (2 cartones)");
+            stage.centerOnScreen();
+            stage.show();
+            stage.setMinWidth(350);
+            stage.setMinHeight(500);
+            
+        }
+        catch (IOException io) {
+            io.printStackTrace();
+        }
     }
     
     private void setHovers () {

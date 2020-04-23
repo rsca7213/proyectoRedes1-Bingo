@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import Helpers.Helpers;
 import Clases.Carton;
 import Clases.Jugador;
+import java.util.ArrayList;
 import javafx.scene.control.Button;
 
 public class JuegoLineaController implements Initializable {
@@ -21,15 +22,16 @@ public class JuegoLineaController implements Initializable {
     private Label labels[]= new Label[25];
     private String bingo[]= new String[13];
     
-            Jugador jugador = new Jugador();
+    //Se crea al jugador
+    private Jugador jugador = new Jugador();
 
     //Llamamos a las funciones desde helpers para obtener los datos de la partida
     Helpers helper = new Helpers();
     
     //Hago instancia de un carton
-    Carton carton= new Carton();
+    Carton carton = new Carton();
     
-    private String numeros[] = carton.getNumeros();
+    private String numeros[] = null;
     private int[] piedras = helper.getPiedras();
     
     //Label con el valor actual de la piedra
@@ -353,7 +355,9 @@ public class JuegoLineaController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        jugador.cartones = new ArrayList<Carton>();
         helper.gridPaneUnCarton(container);
-        helper.completarGridPaneUnCarton(container, jugador.crearCartones(), labels);
+        helper.completarGridPaneUnCarton(container, jugador.crearCartones(1), labels);
+        numeros = jugador.cartones.get(0).getNumeros();
     }
 }

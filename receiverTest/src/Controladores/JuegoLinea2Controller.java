@@ -10,7 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 import Clases.Carton;
+import Clases.Jugador;
 import Helpers.Helpers;
+import java.util.ArrayList;
 import javafx.scene.control.Button;
 
 public class JuegoLinea2Controller implements Initializable {
@@ -21,6 +23,9 @@ public class JuegoLinea2Controller implements Initializable {
     //Hago 2 instancias de carton
     Carton carton1 = new Carton();
     Carton carton2 = new Carton();
+    
+    //Se crea al jugador
+    private Jugador jugador = new Jugador();
     
     //Creacion de labels y verificadores de bingo
     private Label labels1[]= new Label[25];
@@ -605,11 +610,13 @@ public class JuegoLinea2Controller implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        jugador.cartones = new ArrayList<Carton>();
         helper.gridPaneUnCarton(container1);
-        helper.completarGridPaneUnCarton(container1, carton1.getNumeros(), labels1);
+        helper.completarGridPaneUnCarton(container1, jugador.crearCartones(1), labels1);
         helper.gridPaneUnCarton(container2);
-        helper.completarGridPaneUnCarton(container2, carton2.getNumeros(), labels2);
-       
+        helper.completarGridPaneUnCarton(container2, jugador.crearCartones(2), labels2);
+        numerosCarton1 = jugador.cartones.get(0).getNumeros();
+        numerosCarton2 = jugador.cartones.get(1).getNumeros();
     }
 
 }
