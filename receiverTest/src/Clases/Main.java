@@ -18,11 +18,17 @@ import java.util.Scanner;
 public class Main extends Application {
 
     public static void main(String[] args) throws IOException {
-        /*Conector conector = new Conector();
+        Conector conector = new Conector();
         conector.probarConectores();
         conector.configurarEventoReceptor();
         conector.enviarMensaje("mensajito");
-        conector.getReadPort().closePort();*/
+        conector.enviarMensaje("hola");
+        try {
+            conector.getReadPort().closePort();
+        }
+        catch(Exception e) {
+            System.err.println("Ocurrio un error al cerrar el puerto, verifica que VSPE este activo.");
+        }
         
         
         launch(args);

@@ -48,7 +48,7 @@ public class Conector {
             }
         }
         catch(Exception e) {
-            System.out.println("No se puedo abrir el puerto de escritura. \n");
+            System.err.println("No se pudo abrir el puerto de escritura. \n");
         }
     }
     
@@ -90,7 +90,7 @@ public class Conector {
             System.out.println("Receptor Configurado!");
         }
         catch (Exception e) {
-            System.out.println("Error al configurar el evento para el puerto receptor!");
+            System.err.println("Error al configurar el evento para el puerto receptor!");
         }
     }
 
