@@ -18,20 +18,6 @@ import java.util.Scanner;
 public class Main extends Application {
 
     public static void main(String[] args) throws IOException {
-        /*
-        System.out.println("Esperando recepcion de mensaje...");
-        SerialPort readPort = SerialPort.getCommPorts()[1];
-        readPort.openPort();
-        readPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0);
-        System.out.println(readPort.getInputStream());
-        InputStream in = readPort.getInputStream();
-        System.out.print("Mensaje Recibido: \n String: ");
-        for (int j = 0; j < 5; ++j)
-            System.out.print((char)in.read());
-        in.close();
-        System.out.println("\n");
-        readPort.closePort();
-        */
         launch(args);
         
         /*
