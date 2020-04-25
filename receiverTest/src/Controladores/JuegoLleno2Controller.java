@@ -110,53 +110,10 @@ public class JuegoLleno2Controller implements Initializable {
         for (int i = 0; i < 75 && piedras[i] != 0; i++) {
             System.out.print(piedras[i] + ",");
         }
-        
         char letraFicha = ' ';
-        if(number > 1 && number <= 15) {
-            piedra.setStyle("-fx-background-color: #0049FF; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
-            letraFicha = 'B';
-        }
-        else if(number > 15 && number <= 30) {
-            piedra.setStyle("-fx-background-color: #F730D3; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
-            letraFicha = 'I';
-        }
-        else if(number > 31 && number <= 45) {
-            piedra.setStyle("-fx-background-color: #AA00FF; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
-            letraFicha = 'N';
-        }
-        else if(number > 45 && number <= 60) {
-            piedra.setStyle("-fx-background-color: #E98607; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
-            letraFicha = 'G';
-        }
-        else {
-            piedra.setStyle("-fx-background-color: #0049FF; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
-            letraFicha = 'O';
-        }
-        piedra.setText(letraFicha + " " + Integer.toString(number));
-        
-        for (int i = 0; i < numerosCarton1.length; i++) {
-            if((numerosCarton1[i] != "FREE") && (numerosCarton1[i] != "X")){
-                if(number == Integer.parseInt(numerosCarton1[i])){
-                    numerosCarton1[i] = "X";
-                    labels1[i].setStyle("-fx-opacity:1;"
-                            +"-fx-border-color: white;"
-                            + "-fx-border-width: 4px;"
-                            + "-fx-text-fill:white;"
-                            );
-                }
-            }
-            if((numerosCarton2[i] != "FREE") && (numerosCarton2[i] != "X")){
-                if(number == Integer.parseInt(numerosCarton2[i])){
-                    numerosCarton2[i] = "X";
-                    labels2[i].setStyle("-fx-opacity:1;"
-                            +"-fx-border-color: white;"
-                            + "-fx-border-width: 4px;"
-                            + "-fx-text-fill:white;"
-                            );
-                }
-            }
-        }
-        
+        helper.generarPiedras(number, letraFicha, piedra);
+        carton1.piedraCorrecta(labels1,numerosCarton1,number);
+        carton2.piedraCorrecta(labels2,numerosCarton2,number);
         System.out.println("\nEl número de la piedra es: " + Integer.toString(number));
         System.err.println("Cartones: ");
         for (int o = 0; o < numerosCarton1.length; o++) {
@@ -166,43 +123,12 @@ public class JuegoLleno2Controller implements Initializable {
         for (int o = 0; o < numerosCarton2.length; o++) {
             System.out.print(numerosCarton2[o] + ",");
         }
-        
         for(int i=0;i<13;i++){
             bingo1[i]="vacio";  
             bingo2[i]="vacio";  
         }
-        
-        if(helper.verificarGanadaLleno(numerosCarton1) == true) {
-            System.out.println("\n¡FELICIDADES! Ha ganado el juego");
-            for(int i=0; i<25;i++){
-                labels1[i].setStyle("-fx-opacity:1;"
-                            +"-fx-border-color: white;"
-                            + "-fx-border-width: 4px;"
-                            + "-fx-text-fill: white;"
-                            + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
-            }
-            generador.setDisable(true);
-            generador.setText("BINGOOO!");
-            piedra.setVisible(false);
-            piedra.setText("BINGO");
-            piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
-        }
-        
-        if(helper.verificarGanadaLleno(numerosCarton2) == true) {
-            System.out.println("\n¡FELICIDADES! Ha ganado el juego");
-            for(int i=0; i<25;i++){
-                labels2[i].setStyle("-fx-opacity:1;"
-                            +"-fx-border-color: white;"
-                            + "-fx-border-width: 4px;"
-                            + "-fx-text-fill: white;"
-                            + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
-            }
-            generador.setDisable(true);
-            generador.setText("BINGOOO!");
-            piedra.setVisible(false);
-            piedra.setText("BINGO");
-            piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
-        }
+        helper.verificarGanadaLleno(numerosCarton1,labels1,generador,piedra);
+        helper.verificarGanadaLleno(numerosCarton2,labels2,generador,piedra);
     }
     
     

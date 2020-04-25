@@ -1,6 +1,8 @@
 
 package Clases;
 
+import javafx.scene.control.Label;
+
 
 public class Carton {
     
@@ -223,6 +225,21 @@ public class Carton {
     
     public String[] getNumeros() {
         return numeros;
+    }
+    
+    public void piedraCorrecta(Label labels[], String numeros[], int number){
+        for (int i = 0; i < numeros.length; i++) {
+            if((numeros[i] != "FREE") && (numeros[i] != "X")){
+                if(number == Integer.parseInt(numeros[i])){
+                    numeros[i] = "X";
+                    labels[i].setStyle("-fx-opacity:1;"
+                            +"-fx-border-color: white;"
+                            + "-fx-border-width: 4px;"
+                            + "-fx-text-fill:white;"
+                            );
+                }
+            }
+        }
     }
     
     /*

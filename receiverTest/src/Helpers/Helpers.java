@@ -1,5 +1,6 @@
 package Helpers;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
@@ -255,64 +256,51 @@ public class Helpers {
         return contAciertos;
     }
 
-    public void verificarGanadaLinea(String[] numeros, String[] bingo) {
+    public void verificarGanadaLinea(String[] numeros, Label labels[], String bingo[], Button generador, Label piedra) {
 
         if (ver1(numeros) == 5) {
-
-            bingo[0] = "ver1";
+            win(labels,generador,piedra,1,0,5,1);
         }
         if (ver2(numeros) == 5) {
-
-            bingo[1] = "ver2";
+            win(labels,generador,piedra,1,5,10,1);
         }
         if (ver4(numeros) == 5) {
-
-            bingo[2] = "ver4";
+            win(labels,generador,piedra,1,15,20,1);
         }
         if (ver5(numeros) == 5) {
-
-            bingo[3] = "ver5";
+            win(labels,generador,piedra,1,20,25,1);
         }
         if (hor1(numeros) == 5) {
-
-            bingo[4] = "hor1";
+            win(labels,generador,piedra,1,0,21,5);
         }
         if (hor2(numeros) == 5) {
-
-            bingo[5] = "hor2";
+            win(labels,generador,piedra,1,1,22,5);
         }
         if (hor4(numeros) == 5) {
-
-            bingo[6] = "hor4";
+            win(labels,generador,piedra,1,3,24,5);
         }
         if (hor5(numeros) == 5) {
-
-            bingo[7] = "hor5";
+            win(labels,generador,piedra,1,4,25,5);
         }
         if (ver3(numeros) == 4) {
-
-            bingo[8] = "ver3";
+            win(labels,generador,piedra,1,10,15,1);
         }
         if (hor3(numeros) == 4) {
-
-            bingo[9] = "hor3";
+            win(labels,generador,piedra,1,2,23,5);
         }
         if (dia1(numeros) == 4) {
-
-            bingo[10] = "dia1";
+            win(labels,generador,piedra,1,0,25,6);
         }
         if (dia2(numeros) == 4) {
-
-            bingo[11] = "dia2";
+            win(labels,generador,piedra,1,4,21,4);
         }
         if (esq(numeros) == 4) {
-
-            bingo[12] = "esq";
+            win(labels,generador,piedra,2,0,0,0);
         }
 
     }
-
-    public boolean verificarGanadaLleno(String[] numeros) {
+    
+    public void verificarGanadaLleno(String[] numeros, Label labels[], Button generador, Label piedra) {
         int contAciertos = 0;
 
         for (int i = 0; i < numeros.length; i++) {
@@ -394,10 +382,88 @@ public class Helpers {
             }
         }
         if (contAciertos == 24) {
-            return true;
-        } else {
-            return false;
+            win(labels,generador,piedra,3,0,0,0);
         }
+    }
+    
+    private void win(Label labels[], Button generador, Label piedra, int flag, int a, int b, int c){
+        switch (flag) {
+            case 1:
+                for(int i=a;i<b;i+=c){
+                    labels[i].setStyle("-fx-opacity:1;"
+                            +"-fx-border-color: white;"
+                            + "-fx-border-width: 4px;"
+                            + "-fx-text-fill: white;"
+                            + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
+                }
+                break;
+            case 2:
+                labels[0].setStyle("-fx-opacity:1;"
+                            +"-fx-border-color: white;"
+                            + "-fx-border-width: 4px;"
+                            + "-fx-text-fill: white;"
+                            + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
+                labels[4].setStyle("-fx-opacity:1;"
+                            +"-fx-border-color: white;"
+                            + "-fx-border-width: 4px;"
+                            + "-fx-text-fill: white;"
+                            + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
+                labels[20].setStyle("-fx-opacity:1;"
+                            +"-fx-border-color: white;"
+                            + "-fx-border-width: 4px;"
+                            + "-fx-text-fill: white;"
+                            + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
+                labels[24].setStyle("-fx-opacity:1;"
+                            +"-fx-border-color: white;"
+                            + "-fx-border-width: 4px;"
+                            + "-fx-text-fill: white;"
+                            + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
+                labels[12].setStyle("-fx-opacity:1;"
+                            +"-fx-border-color: white;"
+                            + "-fx-border-width: 4px;"
+                            + "-fx-text-fill: white;"
+                            + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
+                break;
+            default:
+                for(int i=0; i<25;i++){
+                    labels[i].setStyle("-fx-opacity:1;"
+                            +"-fx-border-color: white;"
+                            + "-fx-border-width: 4px;"
+                            + "-fx-text-fill: white;"
+                            + "-fx-font-size: 16px;" + "-fx-background-color: #6FDC6F;");
+                }
+                break;
+        }
+        System.out.println("\n¡FELICIDADES! Ha ganado el juego");
+        generador.setDisable(true);
+        generador.setText("BINGOOO!");
+        piedra.setVisible(false);
+        piedra.setText("BINGO");
+        piedra.setStyle("-fx-background-color: #6FDC6F; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px; -fx-min-width: 70px; -fx-font-weigth: bold;");
+    }
+    
+    public void generarPiedras(int number, char letraFicha, Label piedra){
+        if(number > 1 && number <= 15) {
+            piedra.setStyle("-fx-background-color: #0049FF; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
+            letraFicha = 'B';
+        }
+        else if(number > 15 && number <= 30) {
+            piedra.setStyle("-fx-background-color: #F730D3; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
+            letraFicha = 'I';
+        }
+        else if(number > 31 && number <= 45) {
+            piedra.setStyle("-fx-background-color: #AA00FF; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
+            letraFicha = 'N';
+        }
+        else if(number > 45 && number <= 60) {
+            piedra.setStyle("-fx-background-color: #E98607; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
+            letraFicha = 'G';
+        }
+        else {
+            piedra.setStyle("-fx-background-color: #0049FF; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
+            letraFicha = 'O';
+        }
+        piedra.setText(letraFicha + " " + Integer.toString(number));
     }
 
     //Verifico un número que no se haya jugado antes y lo agrego al array de las piedras
