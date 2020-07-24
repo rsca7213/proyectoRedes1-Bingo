@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.util.Scanner;
+import javafx.application.Platform;
 
 public class Main extends Application {
 
@@ -55,6 +56,10 @@ public class Main extends Application {
         stage.setTitle("Bingo");
         stage.setX(100);
         stage.setY(50);
+        stage.setOnCloseRequest(e->{
+                Platform.exit();
+                System.exit(0);    
+        });
         stage.setResizable(false);
         stage.getIcons().add(new Image("/Image/bingo.png"));
         stage.show();

@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -65,6 +66,11 @@ public class MenuController implements Initializable {
             stage.show();
             stage.setMinWidth(350);
             stage.setMinHeight(500);
+            stage.setOnCloseRequest(e->{
+                Platform.exit();
+                System.exit(0);    
+            });
+
             if (sender == true) {
                 controlador.setTurno(true);
             }
@@ -90,6 +96,10 @@ public class MenuController implements Initializable {
             stage.setTitle("Bingo: Juego de Linea (2 cartones)");
             stage.setX(50);
             stage.setY(25);
+            stage.setOnCloseRequest(e->{
+                Platform.exit();
+                System.exit(0);    
+            });
             stage.show();
             stage.setMinWidth(350);
             stage.setMinHeight(500);
@@ -117,6 +127,10 @@ public class MenuController implements Initializable {
             stage.setTitle("Bingo: Juego Cartón Lleno");
             stage.setX(50);
             stage.setY(50);
+            stage.setOnCloseRequest(e->{
+                Platform.exit();
+                System.exit(0);    
+            });
             stage.show();
             stage.setMinWidth(350);
             stage.setMinHeight(500);
@@ -145,6 +159,10 @@ public class MenuController implements Initializable {
             stage.setTitle("Bingo: Juego Cartón Lleno (2 cartones)");
             stage.setX(50);
             stage.setY(25);
+            stage.setOnCloseRequest(e->{
+                Platform.exit();
+                System.exit(0);    
+            });
             stage.show();
             stage.setMinWidth(350);
             stage.setMinHeight(500);
@@ -348,8 +366,7 @@ public class MenuController implements Initializable {
         System.out.println("Escritor: " + writePort);
         configurarEventoReceptor();
         setClickEvents();
-        setHovers();
-        
+        setHovers();    
     }
     
     @FXML

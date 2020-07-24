@@ -61,7 +61,11 @@ public class MenuController implements Initializable {
             stage.sizeToScene();
             stage.setTitle("Bingo: Juego de Linea");
             stage.setX(400);
-            stage.setY(50);       
+            stage.setY(50);    
+            stage.setOnCloseRequest(e->{
+                Platform.exit();
+                System.exit(0);    
+            });
             stage.show();
             stage.setMinWidth(350);
             stage.setMinHeight(500);
@@ -90,6 +94,10 @@ public class MenuController implements Initializable {
             stage.setTitle("Bingo: Juego de Linea (2 cartones)");
             stage.setX(500);
             stage.setY(25);
+            stage.setOnCloseRequest(e->{
+                Platform.exit();
+                System.exit(0);    
+            });
             stage.show();
             stage.setMinWidth(350);
             stage.setMinHeight(500);
@@ -117,6 +125,10 @@ public class MenuController implements Initializable {
             stage.setTitle("Bingo: Juego Cartón Lleno");
             stage.setX(400);
             stage.setY(50);
+            stage.setOnCloseRequest(e->{
+                Platform.exit();
+                System.exit(0);    
+            });
             stage.show();
             stage.setMinWidth(350);
             stage.setMinHeight(500);
@@ -145,6 +157,10 @@ public class MenuController implements Initializable {
             stage.setTitle("Bingo: Juego Cartón Lleno (2 cartones)");
             stage.setX(500);
             stage.setY(25);
+            stage.setOnCloseRequest(e->{
+                Platform.exit();
+                System.exit(0);    
+            });
             stage.show();
             stage.setMinWidth(350);
             stage.setMinHeight(500);
