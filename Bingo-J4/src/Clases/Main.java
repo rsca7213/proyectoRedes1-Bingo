@@ -57,8 +57,8 @@ public class Main extends Application {
         stage.setX(1150);
         stage.setY(50);
         stage.setOnCloseRequest(e->{
-            Platform.exit();
-            System.exit(0);    
+                Platform.exit();
+                System.exit(0);    
         });
         stage.setResizable(false);
         stage.getIcons().add(new Image("/Image/bingo.png"));

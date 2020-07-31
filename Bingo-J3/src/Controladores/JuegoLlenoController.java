@@ -28,6 +28,7 @@ public class JuegoLlenoController implements Initializable {
     private boolean senderBingo = false;
     private int numeroR;
     private boolean turno = false;
+    private boolean bingoBool = false;
     
     private final SerialPort readPort = SerialPort.getCommPorts()[3];
     private final SerialPort writePort = SerialPort.getCommPorts()[4];
@@ -86,7 +87,7 @@ public class JuegoLlenoController implements Initializable {
     */
     @FXML
     private void generar(ActionEvent event) {
-        if(this.turno == false) return;
+        if(this.turno == false || this.bingoBool == true) return;
         sender = true;
         this.turno = false;
         this.generador.setText("No es tu turno");
@@ -160,6 +161,7 @@ public class JuegoLlenoController implements Initializable {
                         if("BINGOOO!".equals(generador.getText())) {
                             senderBingo = true;
                             sender = true;
+                            bingoBool = true;
                             enviarMensaje("B1-B" + Integer.toString(numero) + "-O75");
                         }
                         else {
@@ -184,10 +186,13 @@ public class JuegoLlenoController implements Initializable {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        generador.setText("Un jugador tiene bingo.");
-                        generador.setStyle("-fx-background-color: #ff6666; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
                         recibirJugada(numeroR);
-                        
+                        bingoBool = true;
+                        if(!"BINGOOO!".equals(generador.getText())) {
+                            generador.setText("Un jugador tiene bingo.");
+                            generador.setStyle("-fx-background-color: #ff6666; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
+                        }
+
                     }   
                 });
                 
@@ -213,6 +218,7 @@ public class JuegoLlenoController implements Initializable {
                         if("BINGOOO!".equals(generador.getText())) {
                             sender = true;
                             senderBingo = true;
+                            bingoBool = true;
                             enviarMensaje("B1-B" + Integer.toString(numero) + "-O75");
                         }
                         else {
@@ -240,9 +246,11 @@ public class JuegoLlenoController implements Initializable {
                         @Override
                         public void run() {
                             recibirJugada(numeroR);
-                            generador.setText("Un jugador tiene bingo.");
-                            generador.setStyle("-fx-background-color: #ff6666; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
-                        
+                            bingoBool = true;
+                            if(!"BINGOOO!".equals(generador.getText())) {
+                                generador.setText("Un jugador tiene bingo.");
+                                generador.setStyle("-fx-background-color: #ff6666; -fx-border-radius: 10px; -fx-border-width: 3px; -fx-border-color: white; -fx-background-radius: 11px;");
+                            }
                         }   
                     });
                 

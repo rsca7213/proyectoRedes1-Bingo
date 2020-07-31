@@ -61,7 +61,7 @@ public class MenuController implements Initializable {
             stage.setScene(scene);
             stage.sizeToScene();
             stage.setTitle("Bingo: Juego de Linea");
-            stage.setX(50);
+            stage.setX(15);
             stage.setY(50);       
             stage.show();
             stage.setMinWidth(350);
@@ -125,7 +125,7 @@ public class MenuController implements Initializable {
             stage.setScene(scene);
             stage.sizeToScene();
             stage.setTitle("Bingo: Juego Cartón Lleno");
-            stage.setX(50);
+            stage.setX(15);
             stage.setY(50);
             stage.setOnCloseRequest(e->{
                 Platform.exit();
