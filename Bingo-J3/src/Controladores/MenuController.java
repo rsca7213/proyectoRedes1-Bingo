@@ -102,7 +102,7 @@ public class MenuController implements Initializable {
             });
             stage.show();
             stage.setMinWidth(350);
-            stage.setMinHeight(275);
+            stage.setMinHeight(500);
             if (sender == true) {
                 controlador.setTurno(true);
             }
@@ -203,28 +203,28 @@ public class MenuController implements Initializable {
     public void checkAction(String mensaje) {
         if(sender == false) {
             enviarMensaje(mensaje);
-            if("B1-LINEA1-O75".equals(mensaje))
+            if("B1LI1O75".equals(mensaje))
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
                         juegoLinea();
                     }   
                 });
-            if("B1-LINEA2-O75".equals(mensaje))
+            if("B1LI2O75".equals(mensaje))
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
                         juegoLinea2();
                     }   
                 });
-            if("B1-LLENO1-O75".equals(mensaje))
+            if("B1LL1O75".equals(mensaje))
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
                         juegoLleno();
                     }   
                 });
-            if("B1-LLENO2-O75".equals(mensaje))
+            if("B1LL2O75".equals(mensaje))
             Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
@@ -233,28 +233,28 @@ public class MenuController implements Initializable {
                 });
         }
         else {
-            if("B1-LINEA1-O75".equals(mensaje))
+            if("B1LI1O75".equals(mensaje))
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
                         juegoLinea();
                     }   
                 });
-            if("B1-LINEA2-O75".equals(mensaje))
+            if("B1LI2O75".equals(mensaje))
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
                         juegoLinea2();
                     }   
                 });
-            if("B1-LLENO1-O75".equals(mensaje))
+            if("B1LL1O75".equals(mensaje))
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
                         juegoLleno();
                     }   
                 });
-            if("B1-LLENO2-O75".equals(mensaje))
+            if("B1LL2O75".equals(mensaje))
             Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
@@ -335,24 +335,24 @@ public class MenuController implements Initializable {
             if(cart1.isSelected()) {
                 System.out.println("Opcion de juego de linea con 1 carton clickeado.");
                 sender = true;
-                enviarMensaje("B1-LINEA1-O75");
+                enviarMensaje("B1LI1O75");
             }
             else {
                 System.out.println("Opcion de juego de linea con 2 cartones clickeado.");
                 sender = true;
-                enviarMensaje("B1-LINEA2-O75");
+                enviarMensaje("B1LI2O75");
             }
         });
         llenoPane.setOnMouseClicked((event) -> {
             if(cart1.isSelected()) {
                 System.out.println("Opcion de juego de carton lleno con 1 carton clickeado.");
                 sender = true;
-                enviarMensaje("B1-LLENO1-O75");
+                enviarMensaje("B1LL1O75");
             }
             else {
                 System.out.println("Opcion de juego de carton lleno con 2 cartones clickeado.");
                 sender = true;
-                enviarMensaje("B1-LLENO2-O75");
+                enviarMensaje("B1LL2O75");
             }
         });
     }

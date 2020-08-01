@@ -125,10 +125,10 @@ public class JuegoLinea2Controller implements Initializable {
         
         if("BINGOOO!".equals(generador.getText())) {
             senderBingo = true;
-            enviarMensaje("B1-B" + Integer.toString(number) + "-O75");
+            enviarMensaje("B1B" + Integer.toString(number) + "O75");
         }
         else {
-            enviarMensaje("B1-T" + Integer.toString(number) + "-O75");
+            enviarMensaje("B1T" + Integer.toString(number) + "O75");
         }
     }
     
@@ -170,15 +170,15 @@ public class JuegoLinea2Controller implements Initializable {
         if (sender == false) {
             
             //Caso en el q se recibe un mensaje con numero y indicador de turno
-            if(mensaje.charAt(3) == 'T') {
+            if(mensaje.charAt(2) == 'T') {
                 
                 // Buscamos que numero salió
-                if (mensaje.charAt(5) == '-') {
-                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(4)));
+                if (mensaje.charAt(4) == 'O') {
+                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)));
                     
                 }
                 else {
-                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(4)) + String.valueOf(mensaje.charAt(5)));
+                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)) + String.valueOf(mensaje.charAt(4)));
                 }
                 
                 this.numeroR = numero;
@@ -192,23 +192,23 @@ public class JuegoLinea2Controller implements Initializable {
                             senderBingo = true;
                             sender = true;
                             bingoBool = true;
-                            enviarMensaje("B1-B" + Integer.toString(numero) + "-O75");
+                            enviarMensaje("B1B" + Integer.toString(numero) + "O75");
                         }
                         else {
-                            enviarMensaje("B1-" + Integer.toString(numero) + "-O75");
+                            enviarMensaje("B1" + Integer.toString(numero) + "O75");
                         }
                     }   
                 });
             }
             
             //Caso en el q se recibe un bingo
-            else if(mensaje.charAt(3) == 'B') {
+            else if(mensaje.charAt(2) == 'B') {
                 // Buscamos que numero salió
-                if (mensaje.charAt(5) == '-') {
-                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(4)));
+                if (mensaje.charAt(4) == 'O') {
+                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)));
                 }
                 else {
-                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(4)) + String.valueOf(mensaje.charAt(5)));
+                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)) + String.valueOf(mensaje.charAt(4)));
                 }
                 
                 this.numeroR = numero;
@@ -226,17 +226,17 @@ public class JuegoLinea2Controller implements Initializable {
                     }   
                 });
                 
-                enviarMensaje("B1-B" + Integer.toString(numero) + "-O75");
+                enviarMensaje("B1B" + Integer.toString(numero) + "O75");
             }
             
             //Caso en el q se recibe un mensaje con numero sin indicador de turno
             else {
                 // Buscamos que numero salió
-                if (mensaje.charAt(4) == '-') {
-                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)));
+                if (mensaje.charAt(3) == 'O') {
+                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(2)));
                 }
                 else {
-                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)) + String.valueOf(mensaje.charAt(4)));
+                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(2)) + String.valueOf(mensaje.charAt(3)));
                 }
                 
                 this.numeroR = numero;
@@ -249,10 +249,10 @@ public class JuegoLinea2Controller implements Initializable {
                             sender = true;
                             senderBingo = true;
                             bingoBool = true;
-                            enviarMensaje("B1-B" + Integer.toString(numero) + "-O75");
+                            enviarMensaje("B1B" + Integer.toString(numero) + "O75");
                         }
                         else {
-                            enviarMensaje("B1-" + Integer.toString(numero) + "-O75");
+                            enviarMensaje("B1" + Integer.toString(numero) + "O75");
                         }
                     }   
                 });
@@ -261,13 +261,13 @@ public class JuegoLinea2Controller implements Initializable {
         else {
             sender = false;
             if(senderBingo == false) {
-                if(mensaje.charAt(3) == 'B') {
+                if(mensaje.charAt(2) == 'B') {
                     // Buscamos que numero salió
-                    if (mensaje.charAt(5) == '-') {
-                        numero = Integer.parseInt(String.valueOf(mensaje.charAt(4)));
+                    if (mensaje.charAt(4) == 'O') {
+                        numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)));
                     }
                     else {
-                        numero = Integer.parseInt(String.valueOf(mensaje.charAt(4)) + String.valueOf(mensaje.charAt(5)));
+                        numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)) + String.valueOf(mensaje.charAt(4)));
                     }
                 
                     this.numeroR = numero;
@@ -284,7 +284,7 @@ public class JuegoLinea2Controller implements Initializable {
                         }   
                     });
                 
-                    enviarMensaje("B1-B" + Integer.toString(numero) + "-O75");
+                    enviarMensaje("B1B" + Integer.toString(numero) + "O75");
                 }
             }
         }

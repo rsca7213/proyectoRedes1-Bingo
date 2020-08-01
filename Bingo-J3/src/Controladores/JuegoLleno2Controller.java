@@ -86,58 +86,6 @@ public class JuegoLleno2Controller implements Initializable {
     @FXML
     private Button generador;
 
-    
-    /*
-    //Funcion que determina las propiedades del GridPane
-    private void gridPanePropiedades(){
-        container.setHgap(5);
-        container.setVgap(20);
-        //container.setPadding(new Insets(35, 35, 35, 35));
-    }
-    
-    //Funcion que agrega los valores al GridPane
-    
-    private void completarGridPane(){
-        int cont = 0;
-        
-        for (int j = 0; j < 5; j++) {
-            for (int i = 0; i < 6; i++) {
-                if (i == 0) {
-                    String letra = "";
-                    for (int z = 0; z < 5; z++) {
-                        if (z == 0) {
-                            letra = "B";
-                        } else if (z == 1) {
-                            letra = "I";
-                        } else if (z == 2) {
-                            letra = "N";
-                        } else if (z == 3) {
-                            letra = "G";
-                        } else if (z == 4) {
-                            letra = "O";
-                        }
-                        Label u14 = new Label(letra);
-                        u14.setId("Letra");
-                        container.add(u14, z, i, 1, 1);
-                    }
-                } else {
-                    Label theLabel = new Label(numeros[cont]);
-                    if(cont==12){
-                    theLabel.setId("FREE");
-                    }else{
-                       theLabel.setId("col"+j);
-                    }
-                    container.add(theLabel, j, i, 1, 1);
-                    
-                    cont++;
-                }
-            }
-        }
-        System.out.println("El contador es: " + cont);
-    }
-    */
-
-
     /*
         Esta función se activa al darle click a "Jugar".
         Toma una piedra que no se haya elegido antes y si en el cartón
@@ -177,10 +125,10 @@ public class JuegoLleno2Controller implements Initializable {
         
         if("BINGOOO!".equals(generador.getText())) {
             senderBingo = true;
-            enviarMensaje("B1-B" + Integer.toString(number) + "-O75");
+            enviarMensaje("B1B" + Integer.toString(number) + "O75");
         }
         else {
-            enviarMensaje("B1-T" + Integer.toString(number) + "-O75");
+            enviarMensaje("B1T" + Integer.toString(number) + "O75");
         }
     }
     
@@ -207,44 +155,6 @@ public class JuegoLleno2Controller implements Initializable {
         helper.verificarGanadaLleno(numerosCarton2,labels2,generador,piedra);
     }
     
-    /*
-    @FXML
-    private void generar(ActionEvent event) {
-        int number = helper.verificarPiedra();
-        System.out.println("\nLAS PIEDRAS");
-        for (int i = 0; i < 75 && piedras[i] != 0; i++) {
-            System.out.print(piedras[i] + ",");
-        }
-        
-        piedra.setText(Integer.toString(number));
-        
-        for (int i = 0; i < numerosCarton1.length; i++) {
-            if((numerosCarton1[i] != "FREE") && (numerosCarton1[i] != "X")){
-                if(number == Integer.parseInt(numerosCarton1[i])){
-                    numerosCarton1[i] = "X";
-                }
-            }
-            if((numerosCarton2[i] != "FREE") && (numerosCarton2[i] != "X")){
-                if(number == Integer.parseInt(numerosCarton2[i])){
-                    numerosCarton2[i] = "X";
-                }
-            }
-        }
-        
-        System.out.println("\nEl número de la piedra es: " + Integer.toString(number));
-        System.err.println("Cartones: ");
-        for (int o = 0; o < numerosCarton1.length; o++) {
-            System.out.print(numerosCarton1[o] + ",");
-        }
-        for (int o = 0; o < numerosCarton2.length; o++) {
-            System.out.print(numerosCarton2[o] + ",");
-        }
-        if((helper.verificarGanadaLleno(numerosCarton1) == true) || (helper.verificarGanadaLleno(numerosCarton2) == true)) {
-            System.out.println("\n¡FELICIDADES! Ha ganado el juego");
-        }
-    }
-    */    
-    
     private void checkAction(String mensaje) {
         
         int numero;
@@ -253,15 +163,15 @@ public class JuegoLleno2Controller implements Initializable {
         if (sender == false) {
             
             //Caso en el q se recibe un mensaje con numero y indicador de turno
-            if(mensaje.charAt(3) == 'T') {
+            if(mensaje.charAt(2) == 'T') {
                 
                 // Buscamos que numero salió
-                if (mensaje.charAt(5) == '-') {
-                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(4)));
+                if (mensaje.charAt(4) == 'O') {
+                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)));
                     
                 }
                 else {
-                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(4)) + String.valueOf(mensaje.charAt(5)));
+                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)) + String.valueOf(mensaje.charAt(4)));
                 }
                 
                 this.numeroR = numero;
@@ -275,23 +185,23 @@ public class JuegoLleno2Controller implements Initializable {
                             senderBingo = true;
                             sender = true;
                             bingoBool = true;
-                            enviarMensaje("B1-B" + Integer.toString(numero) + "-O75");
+                            enviarMensaje("B1B" + Integer.toString(numero) + "O75");
                         }
                         else {
-                            enviarMensaje("B1-" + Integer.toString(numero) + "-O75");
+                            enviarMensaje("B1" + Integer.toString(numero) + "O75");
                         }
                     }   
                 });
             }
             
             //Caso en el q se recibe un bingo
-            else if(mensaje.charAt(3) == 'B') {
+            else if(mensaje.charAt(2) == 'B') {
                 // Buscamos que numero salió
-                if (mensaje.charAt(5) == '-') {
-                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(4)));
+                if (mensaje.charAt(4) == 'O') {
+                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)));
                 }
                 else {
-                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(4)) + String.valueOf(mensaje.charAt(5)));
+                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)) + String.valueOf(mensaje.charAt(4)));
                 }
                 
                 this.numeroR = numero;
@@ -308,17 +218,17 @@ public class JuegoLleno2Controller implements Initializable {
                     }   
                 });
                 
-                enviarMensaje("B1-B" + Integer.toString(numero) + "-O75");
+                enviarMensaje("B1B" + Integer.toString(numero) + "O75");
             }
             
             //Caso en el q se recibe un mensaje con numero sin indicador de turno
             else {
                 // Buscamos que numero salió
-                if (mensaje.charAt(4) == '-') {
-                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)));
+                if (mensaje.charAt(3) == 'O') {
+                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(2)));
                 }
                 else {
-                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)) + String.valueOf(mensaje.charAt(4)));
+                    numero = Integer.parseInt(String.valueOf(mensaje.charAt(2)) + String.valueOf(mensaje.charAt(3)));
                 }
                 
                 this.numeroR = numero;
@@ -331,10 +241,10 @@ public class JuegoLleno2Controller implements Initializable {
                             sender = true;
                             senderBingo = true;
                             bingoBool = true;
-                            enviarMensaje("B1-B" + Integer.toString(numero) + "-O75");
+                            enviarMensaje("B1B" + Integer.toString(numero) + "O75");
                         }
                         else {
-                            enviarMensaje("B1-" + Integer.toString(numero) + "-O75");
+                            enviarMensaje("B1" + Integer.toString(numero) + "O75");
                         }
                     }   
                 });
@@ -343,13 +253,13 @@ public class JuegoLleno2Controller implements Initializable {
         else {
             sender = false;
             if(senderBingo == false) {
-                if(mensaje.charAt(3) == 'B') {
+                if(mensaje.charAt(2) == 'B') {
                     // Buscamos que numero salió
-                    if (mensaje.charAt(5) == '-') {
-                        numero = Integer.parseInt(String.valueOf(mensaje.charAt(4)));
+                    if (mensaje.charAt(4) == 'O') {
+                        numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)));
                     }
                     else {
-                        numero = Integer.parseInt(String.valueOf(mensaje.charAt(4)) + String.valueOf(mensaje.charAt(5)));
+                        numero = Integer.parseInt(String.valueOf(mensaje.charAt(3)) + String.valueOf(mensaje.charAt(4)));
                     }
                 
                     this.numeroR = numero;
@@ -366,7 +276,7 @@ public class JuegoLleno2Controller implements Initializable {
                         }   
                     });
                 
-                    enviarMensaje("B1-B" + Integer.toString(numero) + "-O75");
+                    enviarMensaje("B1B" + Integer.toString(numero) + "O75");
                 }
             }
         }
